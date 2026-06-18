@@ -30,6 +30,15 @@ window.addEventListener('DOMContentLoaded',function(){
   yellowInput=$('customYellowLight');
   redInput=$('customRedLight');
   dqInput=$('customDq');
+
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.getRegistrations().then(function(registrations){
+      registrations.forEach(function(registration){
+        registration.unregister();
+      });
+    });
+  }
+
   setInputs(current);
   document.querySelectorAll('input[name="predefinedOption"]').forEach(function(r){r.addEventListener('change',function(){selectPreset(this.value)})});
   greenInput.addEventListener('input',function(){document.getElementById('custom').checked=true;current='custom'});

@@ -1,1 +1,41 @@
-*{box-sizing:border-box}:root{accent-color:teal}input{inline-size:1.3em;block-size:1.3em}html{height:100%;font-size:20px;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;-webkit-overflow-scrolling:touch}body{background-color:hsla(0,0%,27%,1);font-family:'Roboto',-apple-system,BlinkMacSystemFont,Arial,Helvetica,sans-serif;font-weight:400;color:hsla(0,0%,0%,0.6);margin:0;position:absolute;inset:0}#wrapper{position:absolute;inset:0;transition:background-color .3s linear}.sidebar{position:absolute;width:300px;top:0;bottom:0;float:left;margin:0 1em}.sidebar .section{background-color:hsla(0,0%,100%,0.7);margin:1em 0;border-radius:6px;box-shadow:0 0 2em hsla(0,0%,0%,0.2)}.sidebar .option{display:flex;align-items:center;width:100%;cursor:pointer;border-bottom:1px solid hsla(0,0%,0%,0.3);padding:1em;transition:background-color .2s linear}.sidebar .option:last-child{border-bottom:0}#predefined .option:hover{background-color:hsla(0,0%,100%,0.4);cursor:pointer}#controls{background-color:transparent;margin-top:0}#controls button.option{display:block;font-size:1rem;font-weight:700;background-color:hsla(0,0%,100%,1);border:0;cursor:pointer;margin:0;padding:1em;color:hsla(0,0%,0%,0.6);border-radius:6px;font-family:'Roboto',-apple-system,BlinkMacSystemFont,Arial,Helvetica,sans-serif}#controls button.option:last-child{border-bottom:0}#controls button.option:hover{background-color:#fff}#controls button.option.timerRunning{background-color:hsla(0,0%,100%,0.7)}#controls #resetButton{transform:translate(-2000px);margin-top:1em}.option input[type=text]{display:block;width:3.5em;font-size:1rem;text-align:center;border:2px solid transparent;outline:none;padding:.1em;margin:-5px 0 0 0;background-color:hsla(0,0%,100%,1);color:hsla(0,0%,0%,0.6);border-radius:3px;font-family:'Roboto',-apple-system,BlinkMacSystemFont,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}.option input[type=text]:focus{background-color:#fff}.label{margin-left:.5em;vertical-align:middle}.tooltip{display:none;opacity:0;background:hsla(0,0%,100%,1);position:absolute;right:-175px;margin-top:-2.2em;border-radius:10px;min-width:160px;padding:15px 10px;font-size:.9rem;text-align:center}.tooltip:before{content:'';display:block;width:0;height:0;position:absolute;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:8px solid hsla(0,0%,100%,1);left:-8px;top:18px}.clockWrapper{float:left;display:table;width:100%;height:100%}.clockInnerWrapper{display:table-cell;vertical-align:middle;width:100%;height:100%}.clock{font-family:'Roboto Mono',monospace;display:block;text-align:center;font-size:8rem;color:hsla(0,0%,100%,0.65);padding-left:300px}.grower{position:absolute;height:2rem;bottom:0;background-color:hsla(0,0%,100%,0.7);width:0}#hideAway{transform:translateY(0);opacity:1;max-height:1000px}#infoButton{position:absolute;line-height:1.8;z-index:100;top:3vmin;right:3vmin;font-size:1rem;font-weight:700;background-color:hsla(0,0%,100%,0.7);border:0;cursor:pointer;margin:0;height:45px;width:45px;color:hsla(0,0%,0%,0.6);border-radius:100%;font-family:'Roboto Mono',monospace;display:flex;justify-content:center;box-shadow:0 0 2em hsla(0,0%,0%,0.2);border:1px solid hsla(0,0%,100%,0.3)}#info{display:none;opacity:0;background-color:hsla(0,0%,0%,.4);position:absolute;inset:0;justify-content:center;align-items:center}#info .info__inner{background-color:#fff;border-radius:.5rem;box-shadow:0 0 2em hsla(0,0%,0%,0.2);padding:calc(2% + 1em);max-width:45em;max-height:100vh;overflow:scroll}@media screen and (max-width:570px){.clockWrapper,.clockInnerWrapper{display:block;height:auto}.clock{width:100%!important;padding-left:0;font-size:4rem}.sidebar{position:relative;width:100%;margin:0;padding:0 1em}.sidebar .option{padding:.8em!important}.tooltip{right:80px;margin-top:-1.8em;padding:.6em}.tooltip:before{left:auto;right:-12px;border:6px solid transparent;border-left:6px solid hsla(0,0%,100%,1);top:11px}}
+*{box-sizing:border-box}
+:root{accent-color:teal}
+input{inline-size:1.3em;block-size:1.3em}
+html{height:100%;font-size:20px;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;-webkit-overflow-scrolling:touch}
+body{background-color:hsla(0,0%,27%,1);font-family:'Roboto',-apple-system,BlinkMacSystemFont,Arial,Helvetica,sans-serif;font-weight:400;color:hsla(0,0%,0%,0.6);margin:0;position:absolute;inset:0}
+#wrapper{position:absolute;inset:0;transition:background-color .2s linear}
+#wrapper.dqFlash{animation:dqFlash .8s steps(1,end) infinite}
+@keyframes dqFlash{
+  0%,49%{background-color:hsla(0,85%,52%,1)}
+  50%,100%{background-color:hsla(0,100%,18%,1)}
+}
+.sidebar{position:absolute;width:300px;top:0;bottom:0;float:left;margin:0 1em}
+.sidebar .section{background-color:hsla(0,0%,100%,0.7);margin:1em 0;border-radius:6px;box-shadow:0 0 2em hsla(0,0%,0%,0.2)}
+.sidebar .option{display:flex;align-items:center;width:100%;cursor:pointer;border-bottom:1px solid hsla(0,0%,0%,0.3);padding:1em;transition:background-color .2s linear}
+.sidebar .option:last-child{border-bottom:0}
+#predefined .option:hover{background-color:hsla(0,0%,100%,0.4);cursor:pointer}
+#controls{background-color:transparent;margin-top:0}
+#controls button.option{display:block;width:100%;font-size:1rem;font-weight:700;background-color:hsla(0,0%,100%,1);border:0;cursor:pointer;margin:0;padding:1em;color:hsla(0,0%,0%,0.6);border-radius:6px;font-family:'Roboto',-apple-system,BlinkMacSystemFont,Arial,Helvetica,sans-serif}
+#controls button.option:last-child{border-bottom:0}
+#controls button.option:hover{background-color:#fff}
+#controls button.option.timerRunning{background-color:hsla(0,0%,100%,0.7)}
+#controls #resetButton{transform:translate(0);margin-top:1em;display:block}
+.option input[type=text]{display:block;width:3.5em;font-size:1rem;text-align:center;border:2px solid transparent;outline:none;padding:.1em;margin:-5px 0 0 auto;background-color:hsla(0,0%,100%,1);color:hsla(0,0%,0%,0.6);border-radius:3px;font-family:'Roboto',-apple-system,BlinkMacSystemFont,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+.option input[type=text]:focus{background-color:#fff}
+.label{margin-left:.5em;vertical-align:middle}
+.clockWrapper{float:left;display:table;width:100%;height:100%}
+.clockInnerWrapper{display:table-cell;vertical-align:middle;width:100%;height:100%}
+.clock{font-family:'Roboto Mono',monospace;display:block;text-align:center;font-size:8rem;color:hsla(0,0%,100%,0.65);padding-left:300px}
+.grower{position:absolute;height:2rem;bottom:0;background-color:hsla(0,0%,100%,0.7);width:0}
+#infoButton{position:absolute;line-height:1.8;z-index:100;top:3vmin;right:3vmin;font-size:1rem;font-weight:700;background-color:hsla(0,0%,100%,0.7);border:0;cursor:pointer;margin:0;height:45px;width:45px;color:hsla(0,0%,0%,0.6);border-radius:100%;font-family:'Roboto Mono',monospace;display:flex;justify-content:center;align-items:center;box-shadow:0 0 2em hsla(0,0%,0%,0.2);border:1px solid hsla(0,0%,100%,0.3)}
+#info{display:none;opacity:0;background-color:hsla(0,0%,0%,.4);position:absolute;inset:0;justify-content:center;align-items:center;transition:opacity .18s linear}
+#info .info__inner{background-color:#fff;border-radius:.5rem;box-shadow:0 0 2em hsla(0,0%,0%,0.2);padding:calc(2% + 1em);max-width:45em;max-height:100vh;overflow:scroll}
+#info .info__inner h2{margin-top:0}
+#info .info__inner p{line-height:1.5}
+@media screen and (max-width:570px){
+  .clockWrapper,.clockInnerWrapper{display:block;height:auto}
+  .clock{width:100%!important;padding-left:0;font-size:4rem}
+  .sidebar{position:relative;width:100%;margin:0;padding:0 1em}
+  .sidebar .option{padding:.8em!important}
+  #info .info__inner{margin:1rem}
+}

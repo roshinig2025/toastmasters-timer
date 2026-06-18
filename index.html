@@ -1,84 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width = device-width, initial-scale = 1.00, minimum-scale = 1.00, maximum-scale = 1.00"/>
-		<link rel="icon" type="image/png" href="favicon.png">
-		<meta name="apple-mobile-web-app-capable" content="yes"/>
-		<meta name="apple-mobile-web-app-title" content="Speech Timer"/>
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="description" content="Time your speeches at home with this easy to use online Toastmasters speech timer."/>
-		<title>Speech Timer for Toastmasters</title>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
-		<link href="styles.css" rel="stylesheet" type="text/css">
-		<link rel="preconnect" href="https://fonts.googleapis.com"> 
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?&family=Roboto+Mono:wght@700&text=%C3%97i&display=auto" rel="stylesheet">
-	</head>
-	<body>
-		<div id="wrapper">
-			<div class="sidebar" id="sidebar">
-				<div id="hideAway">
-					<div class="section" id="predefined">
-						<label class="option"><input type="radio" name="predefinedOption" value="custom" id="custom"/><span class="label">Custom Time</span></label>
-						<label class="option"><input type="radio" name="predefinedOption" value="tableTopics" id="tabletopics" checked/><span class="label">Table Topics&trade; (1-2 min)</span></label>
-						<label class="option"><input type="radio" name="predefinedOption" value="evaluation" id="evaluation"/><span class="label">Evaluation (2-3 min)</span></label>
-						<label class="option"><input type="radio" name="predefinedOption" value="speech" id="speech"/><span class="label">Speech (5-7 min)</span></label>
-						<label class="option"><input type="radio" name="predefinedOption" value="gracePeriod" id="graceperiod"/><span class="label">30s grace period</span></label>
-					</div>
-					<div class="section" id="times">
-						<label class="option">Green light:
-							<input type="text" onkeypress="validateWatch(this)" onblur="validateThis(this)" id="customGreenLight" placeholder="mm:ss" value="1:00">
-							<span class="tooltip">Format: <code>mm:ss</code></span>
-						</label>
-						<label class="option">Yellow light:
-							<input type="text" onkeypress="validateWatch(this)" onblur="validateThis(this)" id="customYellowLight" placeholder="mm:ss" value="1:30">
-							<span class="tooltip">Format: <code>mm:ss</code></span>
-						</label>
-						<label class="option">Red light:
-							<input type="text" onkeypress="validateWatch(this)" onblur="validateThis(this)" id="customRedLight" placeholder="mm:ss" value="2:00">
-							<span class="tooltip">Format: <code>mm:ss</code></span>
-						</label>
-						<label class="option">Disqualification:
-							<input type="text" onkeypress="validateWatch(this)" onblur="validateThis(this)" id="customDq" placeholder="mm:ss" value="2:30">
-							<span class="tooltip">Format: <code>mm:ss</code></span>
-						</label>
-					</div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Toastmasters Timer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Mono:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div id="wrapper">
+    <button id="infoButton" aria-label="Show info">i</button>
 
-					<div class="section" id="settings">
-						<label class="option">
-							<input type="checkbox" id="showClock" checked/>
-							<span class="label">Show Clock</span>
-						</label>
-					</div>
+    <div class="sidebar">
+      <div class="section" id="predefined">
+        <label class="option">
+          <input type="radio" id="tableTopics" name="predefinedOption" value="tableTopics" checked>
+          <span class="label">Table Topics</span>
+        </label>
 
-				</div>
-				<div id="controls">
-					<button class="section option" id="controlButton">Start</button>
-					<button class="section option" id="resetButton">Reset</button>
-				</div>
-			</div>
-			<div class="clockWrapper" id="clockWrapper">
-				<div class="clockInnerWrapper">
-					<span class="clock" id="clock">00:00</span>
-				</div>
-			</div>
-			<div class="grower" id="grower"></div>
-		</div>
-		<button id="infoButton">i</button>
-		<section id="info">
-			<div class="info__inner">
-				<h1>Toastmasters Speech Timer</h1>
-				<p>This is an unofficial timer for Toastmasters-style speeches.</p>
-			</div>
-		</section>
-		<script>
-			if('serviceWorker' in navigator) {
-				navigator.serviceWorker.register('sw.js').then(function() {});
-			}
-		</script>
-	</body>
-	<script src="app.js"></script>
+        <label class="option">
+          <input type="radio" id="evaluation" name="predefinedOption" value="evaluation">
+          <span class="label">Evaluation</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" id="speech" name="predefinedOption" value="speech">
+          <span class="label">Speech</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" id="gracePeriod" name="predefinedOption" value="gracePeriod">
+          <span class="label">30s grace period</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" id="iceBreaker" name="predefinedOption" value="iceBreaker">
+          <span class="label">Ice Breaker</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" id="custom" name="predefinedOption" value="custom">
+          <span class="label">Custom</span>
+        </label>
+      </div>
+
+      <div class="section">
+        <label class="option">
+          <span>Green</span>
+          <span class="label"></span>
+          <input type="text" id="customGreenLight" value="1:00">
+        </label>
+
+        <label class="option">
+          <span>Yellow</span>
+          <span class="label"></span>
+          <input type="text" id="customYellowLight" value="1:30">
+        </label>
+
+        <label class="option">
+          <span>Red</span>
+          <span class="label"></span>
+          <input type="text" id="customRedLight" value="2:00">
+        </label>
+
+        <label class="option">
+          <span>DQ</span>
+          <span class="label"></span>
+          <input type="text" id="customDq" value="2:30">
+        </label>
+
+        <label class="option">
+          <input type="checkbox" id="showClock" checked>
+          <span class="label">Show clock</span>
+        </label>
+      </div>
+
+      <div id="controls">
+        <button class="option" id="controlButton">Start</button>
+        <button class="option" id="resetButton">Reset</button>
+      </div>
+    </div>
+
+    <div class="clockWrapper">
+      <div class="clockInnerWrapper">
+        <div class="clock" id="clock">00:00</div>
+      </div>
+    </div>
+
+    <div class="grower" id="grower"></div>
+
+    <div id="info" aria-hidden="true">
+      <div class="info__inner">
+        <h2>Toastmasters Timer</h2>
+        <p>Choose a preset or use custom timing.</p>
+        <p>Space bar starts and stops the timer.</p>
+        <p>Colors change automatically at the configured times.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
 </html>
